@@ -12,7 +12,7 @@ A Simple ChatBot for Pony Town
 2. **Setup Bot Configuration**
    - Open config.json and change to your name or keep it
 3. **Do not**
-   - Don't change the file command.py
+   - Don't change the name file command.py
 ### Usage
 1. **Run the Bot:**
    - After completing the installation and configuration steps, run the bot script to start using ```python main.py```.
