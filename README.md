@@ -85,7 +85,7 @@ A Simple ChatBot for Pony Town
 ```
 MIT License
 
-Copyright (c) 2024 Randy Nurdiansyah
+Copyright (c) 2024 RandSfk
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
