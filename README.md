@@ -24,6 +24,8 @@ A Simple ChatBot for Pony Town
      ```bash
      python main.py
      ```
+2. **Cookies**
+   - Insert your Pony Town cookies to cookies.txt
 
 ### Wikis
 
