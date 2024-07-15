@@ -1,27 +1,90 @@
 # PTBot_V2
 A Simple ChatBot for Pony Town
+
 ## How To Use
 
 ### Installation
+
 1. **Clone the Repository:** You can clone this repository using the following command:
-   ```
+   ```bash
    git clone https://github.com/RandSfk/PTBot_V2.git
    ```
    Or download the repository directly from the GitHub page.
 
-2. **Setup Bot Configuration**
-   - Open config.json and change to your name or keep it
-3. **Do not**
-   - Don't change the name file command.py
+2. **Setup Bot Configuration:**
+   - Open `config.json` and change the settings to your preferences or keep the default settings.
+
+3. **Do Not:**
+   - Don't change the name of the `command.py` file.
+
 ### Usage
+
 1. **Run the Bot:**
-   - After completing the installation and configuration steps, run the bot script to start using ```python main.py```.
+   - After completing the installation and configuration steps, run the bot script using:
+     ```bash
+     python main.py
+     ```
 
-## License
+### Wikis
 
-MIT License
+1. **Setup Command:**
+   - Ensure the `def command` is in `command.py`.
+   - To receive whispers, make sure the `whisp` argument is set to `False` initially. If `whisp` is `True`, the function will return "You are receiving a whisper from {username}".
+
+   ```python
+   def command(username, args, whisp=False): #set to False so that the incoming chat is not a whisper
+       roles = {
+           'guest': {
+               'menu|menus|help|m|h': f"Hello, {username}!",
+               'about|owner': "This bot is owned by $owner."
+           },
+           'user': {
+               'about|help': "$owner, $bot_name" #bot_info example
+           },
+           'admin': {
+               'about': "Admins can manage the bot.",
+               'moveUp|moveDown|moveLeft|moveRight': "Admins can move the bot using move commands."
+           },
+           'owner': {
+               'about': "This bot is managed by the owner. Contact $owner for more details.",
+               'moveUp': "Moves the bot up. Usage: 'moveUp(steps)'.",   #Use move commands with steps, e.g., moveUp(2)
+               'moveDown': "Moves the bot down. Usage: 'moveDown(steps)'.",
+               'moveLeft': "Moves the bot left. Usage: 'moveLeft(steps)'.",
+               'moveRight': "Moves the bot right. Usage: 'moveRight(steps)'."
+           }
+       }
+
+       bot_info = {
+           '$bot_name': "Bot Name",
+           '$owner': "Owner Name",
+           '$bot_version': "Bot Version 1.0"
+       }
+
+       role = get_user_role(username)  # Assume a function that gets the role of the user
+
+       if role in roles:
+           for key in roles[role]:
+               if args.split('(')[0] == key:
+                   if 'steps' in roles[role][key]:
+                       steps = args.split('(')[1].split(')')[0]
+                       return format_output(roles[role][key].replace('(steps)', f'({steps})'))
+                   else:
+                       return format_output(roles[role][key])
+
+       if args in bot_info:
+           return format_output(bot_info[args])
+
+       if whisp:  #For example, if you want to receive whisper messages
+           return f"You are receiving a whisper from {username}"
+
+       return "Command not found or not authorized."
+   ```
+
+### License
 
 ```
+MIT License
+
 Copyright (c) 2024 Randy Nurdiansyah
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
