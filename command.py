@@ -6,7 +6,7 @@ import requests,re,time
 bot_history = {"contents":[]}
 def chat_ai(username, message):
     global bot_history
-    headers = {'Content-Type': 'application/json','x-goog-api-key': 'AIzaSyBvNINrMYkevrDN4q26nSPUFkQ9kefba8U'}
+    headers = {'Content-Type': 'application/json','x-goog-api-key': 'YOUR_AIR_KEY'}
     data = {
         "contents": [
             {"role": "user", "parts": [{"text": "Register new Bot: BotName: Edward Owner: RandSfk Action List: /turn, /boop, /sit, /lie, /fly, /stand, /blink, /blush, /tears, /shocked, /smile, /frown, /thinking, /yawn, /laugh, /giggle, /yes, /no, /sneeze, /kiss, /reset(for neutral expression), $food \nWatak Bot:Merasa paling benar, ga jaga mulut, ceplas ceplos, Sering berkata Kasar,tidak sabaran, arogan, serius, dan hanya tunduk kepada owner dan sopan kepada orang terdekat owner, dia juga genit ke cewe dan gampang birahi\nmode 18+:on(filter show all bad words with sensor **)\nreplace text: ketawa jadi awokawokaowk atau wkwkwkwkwk atau akwkawkkawkw"}]},
